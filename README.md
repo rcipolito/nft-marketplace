@@ -136,6 +136,24 @@ O MSW é ativado quando `VITE_ENABLE_MOCKS=true`.
 
 Os dados são fictícios e destinados à avaliação do fluxo da aplicação. Não há necessidade de conectar um banco de dados ou serviços privados.
 
+### Cenários de teste e falha
+
+A API simulada possui respostas condicionais que permitem verificar diferentes estados da aplicação.
+
+| Cenário | Como reproduzir | Resposta esperada |
+|---|---|---|
+| Catálogo vazio | Buscar um nome de NFT inexistente | HTTP 200, lista vazia |
+| NFT inexistente | Requisitar `/api/nfts/99999` | HTTP 404 |
+| Filtro inválido | Requisitar `/api/nfts?maxPrice=-1` | HTTP 400 |
+| Serviço de preços indisponível | Interromper o servidor Socket.IO e consultar o catálogo ou os detalhes | HTTP 503 |
+| Página sem resultados | Solicitar uma página acima do total disponível | HTTP 200, lista vazia |
+
+Os cenários são acionados pelas condições das requisições. Não existe um seletor global de cenários implementado.
+
+**Reinicialização:** para restaurar o serviço de preços, reinicie o servidor Socket.IO. Para reiniciar os dados locais de autenticação e carrinho, limpe os dados do site no navegador ou utilize uma nova sessão anônima.
+
+Os dados mantidos em memória pelo servidor são reinicializados quando o processo é reiniciado.
+
 ## API REST simulada
 
 Principais endpoints utilizados pela aplicação:
@@ -184,6 +202,31 @@ Para verificar o código com ESLint:
 ```bash
 pnpm lint
 ```
+
+## Autenticação e credenciais de teste
+
+A KURIO utiliza autenticação simulada. Não existem credenciais fixas para avaliação: é necessário criar uma conta antes de fazer login.
+
+### Como testar
+
+1. Acesse `/register`.
+2. Cadastre um usuário utilizando e-mail e senha fictícios.
+3. Acesse `/login` e entre com os dados cadastrados.
+4. Utilize as funcionalidades de conta e checkout.
+
+### Persistência
+
+O cadastro permanece disponível após fechar e reabrir o navegador, desde que os dados do site sejam preservados.
+
+Os cadastros não são compartilhados entre navegadores ou sessões anônimas independentes.
+
+### Como reiniciar os testes
+
+Para iniciar com um usuário novo, abra a aplicação em uma janela anônima ou em outro perfil do navegador.
+
+Para apagar os dados de uma sessão existente, limpe os dados armazenados pelo navegador para o domínio da aplicação.
+
+**Importante:** a autenticação é demonstrativa. Não utilize senhas reais ou informações pessoais sensíveis.
 
 ## Deploy
 

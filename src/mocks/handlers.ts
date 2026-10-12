@@ -81,21 +81,6 @@ export const handlers = [
             );
         }
 
-        if (maxPriceParam !== null) {
-            const maxPrice = Number(maxPriceParam);
-
-            if (!Number.isFinite(maxPrice) || maxPrice < 0) {
-                return HttpResponse.json(
-                    { message: "Preço máximo inválido" },
-                    { status: 400 }
-                );
-            }
-
-            result = result.filter(
-                (nft) => Number(nft.priceEth) <= maxPrice
-            );
-        }
-
         const total = result.length;
         const totalPages = Math.ceil(total / pageSize);
 
