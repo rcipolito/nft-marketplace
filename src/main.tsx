@@ -11,17 +11,7 @@ async function startApp() {
   if (import.meta.env.VITE_ENABLE_MOCKS === "true") {
     const { worker } = await import("./mocks/browser");
 
-    await worker.start({
-      onUnhandledRequest(request, print) {
-        // Ignora imagens externas
-        if (request.url.startsWith("https://picsum.photos/")) {
-          return;
-        }
-
-        // Continua avisando sobre outras requisições sem handler
-        print.warning();
-      },
-    });
+    await worker.start();
   }
 
   createRoot(document.getElementById('root')!).render(

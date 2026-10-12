@@ -14,7 +14,7 @@ export type NftResponse = {
     totalPages: number;
 }
 
-export async function buscarNfts( filters: NftFilters ): Promise<NftReponse> {
+export async function buscarNfts( filters: NftFilters ): Promise<NftResponse> {
     const response = await axios.get<NftResponse>("/api/nfts", {
         params: filters,
     });

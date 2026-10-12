@@ -44,6 +44,11 @@ export default function PromoBanners() {
 
                         <Link
                             to="/"
+                            search={{
+                                search: "",
+                                sort: "recent",
+                                page: 1,
+                            }}
                             hash="catalogo"
                             className="mt-5 rounded bg-[#d58b50] px-5 py-2 text-sm font-semibold text-[#150d0a] hover:bg-[#e5a16a]"
                         >

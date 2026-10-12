@@ -12,15 +12,13 @@ import { buscarNftsPorIds } from "@/services/nfts";
 import { criarPedido } from "@/services/orders";
 import { ethToWei, weiToEth } from "@/utils/eth";
 import { registerOrderEvent } from "@/services/order-events";
-import { useAuth } from "@/providers/auth-provider";
 
 export default function Checkout() {
-    const { user } = useAuth();
     const { items, clearCart } = useCart();
     const navigate = useNavigate();
 
     const [coupon, setCoupon] = useState("");
-    const [idempotencyKey, setIdempotencyKey] = useState(
+    const [idempotencyKey] = useState(
         () => crypto.randomUUID()
     );
     const [orderAccessToken] = useState(() => crypto.randomUUID());

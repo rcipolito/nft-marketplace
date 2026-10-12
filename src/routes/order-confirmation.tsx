@@ -78,6 +78,11 @@ export default function OrderConfirmation() {
 
             <Link
                 to="/"
+                search={{
+                    search: "",
+                    sort: "recent",
+                    page: 1,
+                }}
                 className="mt-8 inline-block underline"
             >
                 Voltar ao marketplace

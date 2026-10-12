@@ -26,6 +26,11 @@ export default function HeroBanner() {
 
                 <Link
                     to="/"
+                    search={{
+                        search: "",
+                        sort: "recent",
+                        page: 1,
+                    }}
                     hash="catalogo"
                     className="mt-7 inline-flex w-fit items-center justify-center rounded bg-[#d58b50] px-7 py-3 text-sm font-bold text-[#150d0a] transition-colors hover:bg-[#e5a16a]"
                 >

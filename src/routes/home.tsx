@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { useState } from "react";
 
 import HeroBanner from "@/components/layout/home/hero-banner";
 import NftFiltersSidebar from "@/components/layout/home/nft-filters";
@@ -10,7 +9,6 @@ import PromoBanners from "@/components/layout/home/promo-banners";
 import BlogSection from "@/components/layout/home/blog-section";
 
 import NftCard from "@/components/nft/nft-card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { buscarNfts } from "@/services/nfts";
 import type { NftFilters } from "@/services/nfts";
@@ -19,7 +17,7 @@ import { useFavorites } from "@/hooks/use-favorites";
 export default function Home() {
     const filters = useSearch({ from: "/" });
     const navigate = useNavigate({ from: "/" });
-    const { favorites, toggleFavorite, isFavorite } = useFavorites();
+    const { toggleFavorite, isFavorite } = useFavorites();
 
     function updateFilters(changes: Partial<NftFilters>) {
         navigate({

@@ -26,7 +26,11 @@ export default function Cart() {
                 <h1 className="mb-6 text-3xl font-bold">Meu carrinho</h1>
                 <p>Seu carrinho está vazio.</p>
 
-                <Link to="/" className="mt-4 inline-block underline">
+                <Link to="/" search={{
+                    search: "",
+                    sort: "recent",
+                    page: 1,
+                }} className="mt-4 inline-block underline">
                     Explorar NFTs
                 </Link>
             </main>

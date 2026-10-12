@@ -11,6 +11,11 @@ export default function Header() {
             <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5">
                 <Link
                     to="/"
+                    search={{
+                        search: "",
+                        sort: "recent",
+                        page: 1,
+                    }}
                     className="text-sm font-bold tracking-[0.25em]"
                 >
                     KURIO
@@ -20,11 +25,19 @@ export default function Header() {
                     aria-label="Navegação principal"
                     className="order-3 flex w-full items-center justify-center gap-5 text-xs sm:order-none sm:w-auto sm:gap-8"
                 >
-                    <Link to="/" className="text-[#d58b50]">
+                    <Link to="/" search={{
+    search: "",
+    sort: "recent",
+    page: 1,
+  }} className="text-[#d58b50]">
                         Início
                     </Link>
 
-                    <Link to="/" hash="catalogo" className="hover:text-[#d58b50]">
+                    <Link to="/" search={{
+    search: "",
+    sort: "recent",
+    page: 1,
+  }} hash="catalogo" className="hover:text-[#d58b50]">
                         Mercado
                     </Link>
 
@@ -40,6 +53,11 @@ export default function Header() {
                 <div className="flex items-center gap-4">
                     <Link
                         to="/"
+                        search={{
+                            search: "",
+                            sort: "recent",
+                            page: 1,
+                        }}
                         hash="catalogo"
                         aria-label="Buscar NFTs"
                         className="hover:text-[#d58b50]"

@@ -20,7 +20,14 @@ export default function Login() {
         mutationFn: login,
         onSuccess: (session) => {
             signIn(session);
-            navigate({ to: "/" });
+            navigate({
+                to: "/",
+                search: {
+                    search: "",
+                    sort: "recent",
+                    page: 1,
+                },
+            });
         },
     });
 
